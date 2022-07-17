@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Timeline</title>
+  </head>
+  <body>
+    <h1>Timeline</h1>
+    <div class="container">
+      <div id="timeline">
+      </div>
+    </div>
+
+  <script>
+window.timelines = [
+  {
+    type: "point",
+    year: -100,  // = 100 BC
+    month: 3,    // March
+    day: 27,
+    text: "Lorem ipsum event",
+    color: "#333"
+  },
+  {
+    type: "point",
+    year: 1988,
+    month: 3,
+    day: 27,
+    text: "Bla bla bla",
+    color: "#333"
+  }
+];
+
+function drawTimeline() {
+}
+
+drawTimeline();
+  </script>
+  </body>
+</html>
