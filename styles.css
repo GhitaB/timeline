@@ -11,3 +11,19 @@ div.year-title h2 {
   color: #111;
   text-align: center;
 }
+
+div.event {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+div.event .left,
+div.event .right {
+  width: 50%;
+  padding: 10px;
+}
+
+div.event .left {
+  text-align: right;
+}
