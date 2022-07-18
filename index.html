@@ -13,20 +13,11 @@
     </div>
 
     <div id="templates" style="display: none;">
-      <div class="year">
-        <div class="year-title">2000</div>
-        <!-- <div class="month m1">...</div> -->
-        <!-- <div class="month m2">...</div> -->
-        <!-- <div class="month m3">...</div> -->
-        <!-- <div class="month m4">...</div> -->
-        <!-- <div class="month m5">...</div> -->
-        <!-- <div class="month m6">...</div> -->
-        <!-- <div class="month m7">...</div> -->
-        <!-- <div class="month m8">...</div> -->
-        <!-- <div class="month m9">...</div> -->
-        <!-- <div class="month m10">...</div> -->
-        <!-- <div class="month m11">...</div> -->
-        <!-- <div class="month m12">...</div> -->
+      <div class="event">
+        <div class="year">2000</div>
+        <div class="month">3</div>
+        <div class="day">14</div>
+        <div class="text">Event text</div>
       </div>
     </div>
   <script>
@@ -45,6 +36,14 @@ window.timelines = [
     month: 3,
     day: 27,
     text: "Bla bla bla",
+    color: "#333"
+  },
+  {
+    type: "point",
+    year: 1988,
+    month: 3,
+    day: 28,
+    text: "Bla bla bla 222",
     color: "#333"
   }
 ];
@@ -73,16 +72,6 @@ function drawTimeline() {
   var limits = getTimelineLimits();
   var startYear = limits[0];
   var endYear = limits[1];
-  for (var year = startYear; year <= endYear; year++) {
-    console.log(year);
-    window.expandedTimeline[year] = {};
-
-    // var template = document.querySelector('#templates .year');
-    // var timelineContainer = document.querySelector('.container #timeline');
-    // var clonedTemplate = template.cloneNode(true);
-    // clonedTemplate.querySelector(".year-title").textContent = year;
-    // timelineContainer.appendChild(clonedTemplate);
-  }
 
   // Put the points on the timeline
   for (var i = 0; i < window.timelines.length; i++) {
@@ -94,12 +83,47 @@ function drawTimeline() {
       var eventText = item.text;
       var eventColor = item.color;
 
-      window.expandedTimeline[eventYear][eventMonth] = {};
-      window.expandedTimeline[eventYear][eventMonth][eventDay] = [];
+      if (!window.expandedTimeline.hasOwnProperty(eventYear)) {
+        window.expandedTimeline[eventYear] = {};
+      }
+      if (!window.expandedTimeline[eventYear].hasOwnProperty(eventMonth)) {
+        window.expandedTimeline[eventYear][eventMonth] = {};
+      }
+      if (!window.expandedTimeline[eventYear][eventMonth].hasOwnProperty(eventDay)) {
+        window.expandedTimeline[eventYear][eventMonth][eventDay] = [];
+      }
       window.expandedTimeline[eventYear][eventMonth][eventDay].push({
         text: eventText,
         color: eventColor
       });
+    }
+  }
+
+  for (var year = startYear; year <= endYear; year++) {
+    for (var month = 1; month <= 12; month++) {
+      for (var day = 1; day <= 31; day++) {
+        if (window.expandedTimeline.hasOwnProperty(year)) {
+          if (window.expandedTimeline[year].hasOwnProperty(month)) {
+            if (window.expandedTimeline[year][month].hasOwnProperty(day)) {
+              var events = window.expandedTimeline[year][month][day];
+              for (var i = 0; i < events.length; i++) {
+                console.log(events[i]);
+
+                var text = events[i].text;
+
+                var template = document.querySelector('#templates .event');
+                var timelineContainer = document.querySelector('.container #timeline');
+                var clonedTemplate = template.cloneNode(true);
+                clonedTemplate.querySelector(".year").textContent = year;
+                clonedTemplate.querySelector(".month").textContent = month;
+                clonedTemplate.querySelector(".day").textContent = day;
+                clonedTemplate.querySelector(".text").textContent = text;
+                timelineContainer.appendChild(clonedTemplate);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
