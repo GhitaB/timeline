@@ -13,6 +13,7 @@
     </div>
 
     <div id="templates" style="display: none;">
+      <div class="year-title"><h2>2000</h2></div>
       <div class="event">
         <div class="year">2000</div>
         <div class="month">3</div>
@@ -67,6 +68,13 @@ function getTimelineLimits() {
   return [minYear, maxYear];
 }
 
+function humanReadableYear(year) {
+  if (year < 0) {
+    return year + " B.C.";
+  }
+  return year + " A.D.";
+}
+
 function drawTimeline() {
   // Init the timeline [min year ... max year]
   var limits = getTimelineLimits();
@@ -100,6 +108,13 @@ function drawTimeline() {
   }
 
   for (var year = startYear; year <= endYear; year++) {
+    var template = document.querySelector('#templates .year-title');
+    var timelineContainer = document.querySelector('.container #timeline');
+    var clonedTemplate = template.cloneNode(true);
+
+    clonedTemplate.querySelector('h2').textContent = humanReadableYear(year);
+    timelineContainer.appendChild(clonedTemplate);
+
     for (var month = 1; month <= 12; month++) {
       for (var day = 1; day <= 31; day++) {
         if (window.expandedTimeline.hasOwnProperty(year)) {
