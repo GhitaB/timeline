@@ -1,3 +1,13 @@
-h2 {
-  color: red;
+h1 {
+  text-align: center;
+}
+
+div.year-title {
+  width: 100%;
+}
+
+div.year-title h2 {
+  background: #EEE;
+  color: #111;
+  text-align: center;
 }
