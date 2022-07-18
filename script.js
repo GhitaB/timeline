@@ -120,3 +120,9 @@ function drawTimeline() {
 }
 
 drawTimeline();
+
+// TODO:
+// GitHub pages
+// fix human readable year for A.D.
+// implement colors
+// implement time periods
