@@ -155,5 +155,4 @@ function drawTimeline() {
 drawTimeline();
 
 // TODO:
-// implement colors
 // implement time periods
