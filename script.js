@@ -46,7 +46,7 @@ function getTimelineLimits() {
 
 function humanReadableYear(year) {
   if (year < 0) {
-    return year + " B.C.";
+    return - year + " B.C.";
   }
   return year + " A.D.";
 }
@@ -122,7 +122,5 @@ function drawTimeline() {
 drawTimeline();
 
 // TODO:
-// GitHub pages
-// fix human readable year for A.D.
 // implement colors
 // implement time periods
