@@ -6,6 +6,18 @@ div.year-title {
   width: 100%;
 }
 
+div.year-title.hidden-year {
+  opacity: 0.3;
+}
+
+div.year-title.start-no-events {
+  opacity: 0.5;
+}
+
+div.year-title.end-no-events {
+  opacity: 0.5;
+}
+
 div.year-title h2 {
   background: #EEE;
   color: #111;

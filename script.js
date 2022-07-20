@@ -9,6 +9,14 @@ window.timelines = [
   },
   {
     type: "point",
+    year: -98,
+    month: 5,
+    day: 27,
+    text: "Lorem ipsum event 2",
+    color: "#2d3436"
+  },
+  {
+    type: "point",
     year: -40,
     month: 8,
     day: 3,
@@ -80,6 +88,22 @@ function humanReadableMonth(month) {
   return window.settings.months[month];
 }
 
+function yearType(year) {
+  for (var i = 0; i < window.settings.noEventsYears.length; i++) {
+    var period = window.settings.noEventsYears[i];
+    if (year === period[0]) {
+      return "start-no-events";
+    }
+    if (year === period[1]) {
+      return "end-no-events";
+    }
+    if (year > period[0] && year < period[1]) {
+      return "hidden-year";
+    }
+  }
+  return "expanded-year";
+}
+
 function drawTimeline() {
   // Init the timeline [min year ... max year]
   var limits = getTimelineLimits();
@@ -145,6 +169,7 @@ function drawTimeline() {
       lastNoEvents = -100000;
     }
   }
+  window.settings.noEventsYears = allNoEvents;
 
   // Draw the timeline
   for (var year = startYear; year <= endYear; year++) {
@@ -156,6 +181,7 @@ function drawTimeline() {
     var clonedTemplate = template.cloneNode(true);
 
     clonedTemplate.querySelector('h2').textContent = humanReadableYear(year);
+    clonedTemplate.classList.add(yearType(year));
     timelineContainer.appendChild(clonedTemplate);
 
     for (var month = 1; month <= 12; month++) {
