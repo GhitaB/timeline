@@ -112,6 +112,41 @@ function drawTimeline() {
     }
   }
 
+  // Check for no events years
+  var allNoEvents = [];
+  var noEvents = [];
+  var lastNoEvents = -100000;
+  for (var year = startYear; year <= endYear; year++) {
+    // make sure all years are initialized
+    if (!window.expandedTimeline.hasOwnProperty(year)) {
+      window.expandedTimeline[year] = {};
+    }
+    if (year === 0) {
+      continue;
+    }
+
+    // has this year events?
+    if (Object.keys(window.expandedTimeline[year]).length === 0) {
+      // update no events period limits
+      if (noEvents.length === 0) {
+        noEvents[0] = year;
+      } else {
+        noEvents[1] = year;
+      }
+
+      lastNoEvents = year;
+    } else {
+      // save this period of no events years
+      if (noEvents.length == 2) {
+        allNoEvents.push(noEvents);
+      }
+      // reset
+      noEvents = [];
+      lastNoEvents = -100000;
+    }
+  }
+
+  // Draw the timeline
   for (var year = startYear; year <= endYear; year++) {
     if (year === 0) {
       continue;
