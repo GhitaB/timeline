@@ -84,6 +84,9 @@ function drawTimeline() {
   }
 
   for (var year = startYear; year <= endYear; year++) {
+    if (year === 0) {
+      continue;
+    }
     var template = document.querySelector('#templates .year-title');
     var timelineContainer = document.querySelector('.container #timeline');
     var clonedTemplate = template.cloneNode(true);
