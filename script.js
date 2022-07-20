@@ -5,7 +5,7 @@ window.timelines = [
     month: 5,    // March
     day: 27,
     text: "Lorem ipsum event",
-    color: "#333"
+    color: "#2d3436"
   },
   {
     type: "point",
@@ -13,7 +13,7 @@ window.timelines = [
     month: 8,
     day: 3,
     text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
-    color: "#333"
+    color: "#2d3436"
   },
   {
     type: "point",
@@ -21,7 +21,7 @@ window.timelines = [
     month: 3,
     day: 27,
     text: "Bla bla bla",
-    color: "#333"
+    color: "#2d3436"
   },
   {
     type: "point",
@@ -29,7 +29,7 @@ window.timelines = [
     month: 3,
     day: 28,
     text: "Bla bla bla 222",
-    color: "#333"
+    color: "#00b894"
   }
 ];
 
@@ -137,6 +137,7 @@ function drawTimeline() {
                 var template = document.querySelector('#templates .event');
                 var timelineContainer = document.querySelector('.container #timeline');
                 var clonedTemplate = template.cloneNode(true);
+                clonedTemplate.querySelector(".event-date").style.background = events[i].color;
                 clonedTemplate.querySelector(".year").textContent = humanReadableYear(year);
                 clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
                 clonedTemplate.querySelector(".day").textContent = day;
