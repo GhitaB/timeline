@@ -2,9 +2,17 @@ window.timelines = [
   {
     type: "point",
     year: -100,  // = 100 BC
-    month: 3,    // March
+    month: 5,    // March
     day: 27,
     text: "Lorem ipsum event",
+    color: "#333"
+  },
+  {
+    type: "point",
+    year: -40,
+    month: 8,
+    day: 3,
+    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
     color: "#333"
   },
   {
@@ -26,6 +34,23 @@ window.timelines = [
 ];
 
 window.expandedTimeline = {};
+
+window.settings = {
+  months: {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+  }
+}
 
 function getTimelineLimits() {
   // Return start year and end year
@@ -49,6 +74,10 @@ function humanReadableYear(year) {
     return - year + " B.C.";
   }
   return year + " A.D.";
+}
+
+function humanReadableMonth(month) {
+  return window.settings.months[month];
 }
 
 function drawTimeline() {
@@ -109,7 +138,7 @@ function drawTimeline() {
                 var timelineContainer = document.querySelector('.container #timeline');
                 var clonedTemplate = template.cloneNode(true);
                 clonedTemplate.querySelector(".year").textContent = humanReadableYear(year);
-                clonedTemplate.querySelector(".month").textContent = month;
+                clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
                 clonedTemplate.querySelector(".day").textContent = day;
                 clonedTemplate.querySelector(".text").textContent = text;
                 timelineContainer.appendChild(clonedTemplate);

@@ -40,10 +40,19 @@ div.event .event-date {
   margin-left: auto;
   padding: 10px;
   border-radius: 10px;
+  text-align: center;
 }
 
 div.event .event-date .year {
-  font-size: 10px;
+  font-size: 12px;
+}
+
+div.event .event-date .month {
+  font-size: 12px;
+}
+
+div.event .event-date .day {
+  font-size: 30px;
 }
 
 div.event .text {
