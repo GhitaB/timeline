@@ -108,7 +108,7 @@ function drawTimeline() {
                 var template = document.querySelector('#templates .event');
                 var timelineContainer = document.querySelector('.container #timeline');
                 var clonedTemplate = template.cloneNode(true);
-                clonedTemplate.querySelector(".year").textContent = year;
+                clonedTemplate.querySelector(".year").textContent = humanReadableYear(year);
                 clonedTemplate.querySelector(".month").textContent = month;
                 clonedTemplate.querySelector(".day").textContent = day;
                 clonedTemplate.querySelector(".text").textContent = text;

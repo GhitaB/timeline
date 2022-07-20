@@ -42,6 +42,10 @@ div.event .event-date {
   border-radius: 10px;
 }
 
+div.event .event-date .year {
+  font-size: 10px;
+}
+
 div.event .text {
   background: #EEE;
   color: #111;
