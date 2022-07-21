@@ -1,4 +1,4 @@
-window.timelines = [
+var example1 = [
   {
     type: "point",
     year: -100,  // = 100 BC
@@ -41,6 +41,26 @@ window.timelines = [
   }
 ];
 
+var example2 = [
+  {
+    type: "point",
+    year: -100,
+    month: 5,
+    day: 27,
+    text: "Lorem ipsum event",
+    color: "#2d3436"
+  },
+  {
+    type: "point",
+    year: -98,
+    month: 5,
+    day: 27,
+    text: "Lorem ipsum event 2",
+    color: "#2d3436"
+  },
+];
+
+window.timelines = example1;
 window.expandedTimeline = {};
 
 window.settings = {
@@ -217,3 +237,4 @@ drawTimeline();
 
 // TODO:
 // implement time periods
+// BC - change order <events> - <year title>?
