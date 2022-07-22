@@ -58,9 +58,47 @@ var example2 = [
     text: "Lorem ipsum event 2",
     color: "#2d3436"
   },
+  {
+    type: "period",
+    start: {
+      year: -100,
+      month: 1,
+      day: 1,
+      text: "Start period 1",
+      color: "green"
+    },
+    end: {
+      year: 200,
+      month: 5,
+      day: 5,
+      text: "End period 1",
+      color: "red"
+    },
+    text: "Period 1",
+    color: "blue",
+  },
+  {
+    type: "period",
+    start: {
+      year: 500,
+      month: 2,
+      day: 2,
+      text: "Start period 1",
+      color: "green"
+    },
+    end: {
+      year: 1000,
+      month: 3,
+      day: 3,
+      text: "End period 1",
+      color: "red"
+    },
+    text: "Period 1",
+    color: "blue",
+  }
 ];
 
-window.timelines = example1;
+window.timelines = example2;
 window.expandedTimeline = {};
 
 window.settings = {
@@ -129,6 +167,14 @@ function drawTimeline() {
   var limits = getTimelineLimits();
   var startYear = limits[0];
   var endYear = limits[1];
+
+  // Put the periods on the timeline
+  for (var i = 0; i < window.timelines.length; i++) {
+    var item = window.timelines[i];
+    if (item.type === "period") {
+      console.log(item);
+    }
+  }
 
   // Put the points on the timeline
   for (var i = 0; i < window.timelines.length; i++) {
@@ -238,3 +284,4 @@ drawTimeline();
 // TODO:
 // implement time periods
 // BC - change order <events> - <year title>?
+// Fix limits definition - to include time periods too
