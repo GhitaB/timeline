@@ -124,14 +124,31 @@ function getTimelineLimits() {
   var minYear = 10000;
   for (var i = 0; i < window.timelines.length; i++) {
     var item = window.timelines[i];
-    if (item.year > maxYear) {
-      maxYear = item.year;
+    if (item.type === "point") {
+      if (item.year > maxYear) {
+        maxYear = item.year;
+      }
+      if (item.year < minYear) {
+        minYear = item.year;
+      }
     }
-    if (item.year < minYear) {
-      minYear = item.year;
+    if (item.type === "period") {
+      if (item.start.year > maxYear) {
+        maxYear = item.start.year;
+      }
+      if (item.start.year < minYear) {
+        minYear = item.start.year;
+      }
+      if (item.end.year > maxYear) {
+        maxYear = item.end.year;
+      }
+      if (item.end.year < minYear) {
+        minYear = item.end.year;
+      }
     }
   }
 
+  console.log(minYear, maxYear);
   return [minYear, maxYear];
 }
 
@@ -284,4 +301,3 @@ drawTimeline();
 // TODO:
 // implement time periods
 // BC - change order <events> - <year title>?
-// Fix limits definition - to include time periods too
