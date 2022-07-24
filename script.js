@@ -132,6 +132,15 @@ var example3 = [
     text: "Datorită accidentului, Ellen G. White (Harmon) e nevoită să abandoneze școala.",
     color: "#2d3436"
   },
+  {
+    type: "point",
+    year: 1840,
+    month: 3,
+    day: 1,
+    approxDay: true,
+    text: "William Miller vizitează Portland, Maine pentru prima dată ca să predice aici.",
+    color: "#2d3436"
+  },
 ];
 
 window.timelines = example3;
@@ -355,7 +364,8 @@ function drawTimeline() {
                     clonedTemplate.querySelector(".month").remove();
                     clonedTemplate.querySelector(".day").remove();
                   } else {
-                    if (events[i].approxMonth === true) {
+                    if (events[i].approxDay === true) {
+                      clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
                       clonedTemplate.querySelector(".day").remove();
                     }
                   }
