@@ -109,7 +109,7 @@ var example3 = [
     month: 11,
     day: 26,
     text: "Se naște Ellen G. White (Harmon), în Gorham, Maine, SUA. Părinții: Robert și Eunice Harmon. Are o soră Geamănă: Elizabeth.",
-    color: "#2d3436"
+    color: "#e17055"
   },
   {
     type: "point",
@@ -119,7 +119,7 @@ var example3 = [
     approxMonth: true,
     approxDay: true,
     text: "La 9 ani Ellen G. White (Harmon) are accidentul.",
-    color: "#2d3436"
+    color: "#636e72"
   },
   {
     type: "point",
@@ -130,7 +130,7 @@ var example3 = [
     approxMonth: true,
     approxDay: true,
     text: "Datorită accidentului, Ellen G. White (Harmon) e nevoită să abandoneze școala.",
-    color: "#2d3436"
+    color: "#6c5ce7"
   },
   {
     type: "point",
@@ -139,9 +139,123 @@ var example3 = [
     day: 1,
     approxDay: true,
     text: "William Miller vizitează Portland, Maine pentru prima dată ca să predice aici.",
-    color: "#2d3436"
+    color: "#00b894"
+  },
+  {
+    type: "point",
+    year: 1842,
+    month: 6,
+    day: 1,
+    approxDay: true,
+    text: "William Miller vizitează Portland, Maine pentru prima a doua oară.",
+    color: "#00b894"
+  },
+  {
+    type: "point",
+    year: 1843,
+    month: 1,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "Separarea familiei Harmon de Biserica Metodistă.",
+    color: "#e17055"
+  },
+  {
+    type: "period",
+    start: {
+      year: 1843,
+      month: 3,
+      day: 21,
+      text: "Începe anul 1843 după calendarul ebraic.",
+      color: "#0984e3"
+    },
+    end: {
+      year: 1844,
+      month: 3,
+      day: 21,
+      text: "Se încheie anul 1843 după calendarul ebraic.",
+      color: "#0984e3"
+    },
+    text: "Anul 1843 ebraic",
+    color: "#81ecec",
+  },
+  {
+    type: "point",
+    year: 1844,
+    month: 10,
+    day: 22,
+    text: "Marea dezamăgire. / Începe judecata preadventă.",
+    color: "#e17055"
+  },
+  {
+    type: "point",
+    year: 1848,
+    month: 1,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "Conferințele despre Sabat",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1849,
+    month: 6,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "(vara) Fr. James White începe lucrarea de publicare (Middletown).",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1855,
+    month: 12,
+    day: 1,
+    approxDay: true,
+    text: "Se publică prima broșură din seria Mărturiilor pentru Biserică.",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1856,
+    month: 12,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "EGW identifică AZS ca fiind Laodiceea.",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1860,
+    month: 1,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "Este organizată lucrarea de publicare. Se hotărăște numele AZS.",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1863,
+    month: 5,
+    day: 1,
+    approxDay: true,
+    text: "Organizarea Conferinței Generale a AZS.",
+    color: "#636e72"
+  },
+  {
+    type: "point",
+    year: 1863,
+    month: 6,
+    day: 1,
+    approxDay: true,
+    text: "Reforma sănătății, reforma în îmbrăcăminte.",
+    color: "#636e72"
   },
 ];
+// colors: https://flatuicolors.com/palette/us
 
 window.timelines = example3;
 window.expandedTimeline = {};
