@@ -75,3 +75,13 @@ div.event .text {
   padding: 10px;
   border-radius: 10px;
 }
+
+div.event .details {
+  margin-top: 10px;
+  background: #EEE;
+  color: #111;
+  max-width: 300px;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
