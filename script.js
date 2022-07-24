@@ -48,7 +48,11 @@ var example2 = [
     month: 5,
     day: 27,
     text: "Lorem ipsum event",
-    color: "#2d3436"
+    color: "#2d3436",
+    link: {
+      text: "Find more here",
+      url: "https://google.com"
+    }
   },
   {
     type: "point",
@@ -198,6 +202,7 @@ function addItemToExpandedTimeline(item, details) {
   window.expandedTimeline[eventYear][eventMonth][eventDay].push({
     text: eventText,
     color: eventColor,
+    link: item.link,
     details: details
   });
 }
@@ -301,6 +306,12 @@ function drawTimeline() {
                   clonedTemplate.querySelector(".details").textContent = detailsText;
                   clonedTemplate.querySelector(".details").style.background = detailsColor;
                 }
+                if (events[i].link === undefined) {
+                  clonedTemplate.querySelector(".more").remove();
+                } else {
+                  clonedTemplate.querySelector(".more").innerHTML = events[i].link.text;
+                  clonedTemplate.querySelector(".more").href = events[i].link.url;
+                }
                 timelineContainer.appendChild(clonedTemplate);
               }
             }
@@ -312,7 +323,3 @@ function drawTimeline() {
 }
 
 drawTimeline();
-
-// TODO:
-// implement time periods
-// BC - change order <events> - <year title>?

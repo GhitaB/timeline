@@ -85,3 +85,10 @@ div.event .details {
   padding: 10px;
   border-radius: 10px;
 }
+
+a.more {
+  margin-top: 10px;
+  display: block;
+  font-size: 12px;
+  color: #888;
+}
