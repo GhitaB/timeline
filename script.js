@@ -294,7 +294,11 @@ function drawTimeline() {
                 clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
                 clonedTemplate.querySelector(".day").textContent = day;
                 clonedTemplate.querySelector(".text").textContent = text;
-                clonedTemplate.querySelector(".details").textContent = detailsText;
+                if (detailsText === undefined) {
+                  clonedTemplate.querySelector(".details").remove();
+                } else {
+                  clonedTemplate.querySelector(".details").textContent = detailsText;
+                }
                 timelineContainer.appendChild(clonedTemplate);
               }
             }
