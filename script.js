@@ -102,23 +102,69 @@ var example2 = [
   }
 ];
 
-window.timelines = example2;
+var example3 = [
+  {
+    type: "point",
+    year: 1827,
+    month: 11,
+    day: 26,
+    text: "Se naște Ellen G. White (Harmon), în Gorham, Maine, SUA. Părinții: Robert și Eunice Harmon. Are o soră Geamănă: Elizabeth.",
+    color: "#2d3436"
+  },
+  {
+    type: "point",
+    year: 1836,
+    month: 6,
+    day: 1,
+    approxMonth: true,
+    approxDay: true,
+    text: "La 9 ani Ellen G. White (Harmon) are accidentul.",
+    color: "#2d3436"
+  },
+  {
+    type: "point",
+    year: 1839,
+    month: 6,
+    day: 1,
+    approxYear: true,
+    approxMonth: true,
+    approxDay: true,
+    text: "Datorită accidentului, Ellen G. White (Harmon) e nevoită să abandoneze școala.",
+    color: "#2d3436"
+  },
+];
+
+window.timelines = example3;
 window.expandedTimeline = {};
 
 window.settings = {
+  // months: {
+  //   1: "January",
+  //   2: "February",
+  //   3: "March",
+  //   4: "April",
+  //   5: "May",
+  //   6: "June",
+  //   7: "July",
+  //   8: "August",
+  //   9: "September",
+  //   10: "October",
+  //   11: "November",
+  //   12: "December"
+  // }
   months: {
-    1: "January",
-    2: "February",
-    3: "March",
-    4: "April",
-    5: "May",
-    6: "June",
-    7: "July",
+    1: "Ianuarie",
+    2: "Februarie",
+    3: "Martie",
+    4: "Aprilie",
+    5: "Mai",
+    6: "Iunie",
+    7: "Iulie",
     8: "August",
-    9: "September",
-    10: "October",
-    11: "November",
-    12: "December"
+    9: "Septembrie",
+    10: "Octombrie",
+    11: "Noiembrie",
+    12: "Decembrie"
   }
 }
 
@@ -158,9 +204,9 @@ function getTimelineLimits() {
 
 function humanReadableYear(year) {
   if (year < 0) {
-    return - year + " B.C.";
+    return - year + " î.Hr.";
   }
-  return year + " A.D.";
+  return year;
 }
 
 function humanReadableMonth(month) {
@@ -203,6 +249,9 @@ function addItemToExpandedTimeline(item, details) {
     text: eventText,
     color: eventColor,
     link: item.link,
+    approxYear: item.approxYear,
+    approxMonth: item.approxMonth,
+    approxDay: item.approxDay,
     details: details
   });
 }
@@ -297,8 +346,25 @@ function drawTimeline() {
                 var clonedTemplate = template.cloneNode(true);
                 clonedTemplate.querySelector(".event-date").style.background = events[i].color;
                 clonedTemplate.querySelector(".year").textContent = humanReadableYear(year);
-                clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
-                clonedTemplate.querySelector(".day").textContent = day;
+
+                if (events[i].approxYear === true) {
+                  clonedTemplate.querySelector(".month").textContent = "aprox.";
+                  clonedTemplate.querySelector(".day").remove();
+                } else {
+                  if (events[i].approxMonth === true) {
+                    clonedTemplate.querySelector(".month").remove();
+                    clonedTemplate.querySelector(".day").remove();
+                  } else {
+                    if (events[i].approxMonth === true) {
+                      clonedTemplate.querySelector(".day").remove();
+                    }
+                  }
+                }
+
+                if (events[i].approxYear !== true && events[i].approxMonth !== true && events[i].approxDay !== true) {
+                  clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
+                  clonedTemplate.querySelector(".day").textContent = day;
+                }
                 clonedTemplate.querySelector(".text").textContent = text;
                 if (detailsText === undefined) {
                   clonedTemplate.querySelector(".details").remove();
