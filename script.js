@@ -179,6 +179,28 @@ function yearType(year) {
   return "expanded-year";
 }
 
+function addItemToExpandedTimeline(item) {
+  var eventYear = item.year;
+  var eventMonth = item.month;
+  var eventDay = item.day;
+  var eventText = item.text;
+  var eventColor = item.color;
+
+  if (!window.expandedTimeline.hasOwnProperty(eventYear)) {
+    window.expandedTimeline[eventYear] = {};
+  }
+  if (!window.expandedTimeline[eventYear].hasOwnProperty(eventMonth)) {
+    window.expandedTimeline[eventYear][eventMonth] = {};
+  }
+  if (!window.expandedTimeline[eventYear][eventMonth].hasOwnProperty(eventDay)) {
+    window.expandedTimeline[eventYear][eventMonth][eventDay] = [];
+  }
+  window.expandedTimeline[eventYear][eventMonth][eventDay].push({
+    text: eventText,
+    color: eventColor
+  });
+}
+
 function drawTimeline() {
   // Init the timeline [min year ... max year]
   var limits = getTimelineLimits();
@@ -189,7 +211,8 @@ function drawTimeline() {
   for (var i = 0; i < window.timelines.length; i++) {
     var item = window.timelines[i];
     if (item.type === "period") {
-      console.log(item);
+      addItemToExpandedTimeline(item.start);
+      addItemToExpandedTimeline(item.end);
     }
   }
 
@@ -197,25 +220,7 @@ function drawTimeline() {
   for (var i = 0; i < window.timelines.length; i++) {
     var item = window.timelines[i];
     if (item.type === "point") {
-      var eventYear = item.year;
-      var eventMonth = item.month;
-      var eventDay = item.day;
-      var eventText = item.text;
-      var eventColor = item.color;
-
-      if (!window.expandedTimeline.hasOwnProperty(eventYear)) {
-        window.expandedTimeline[eventYear] = {};
-      }
-      if (!window.expandedTimeline[eventYear].hasOwnProperty(eventMonth)) {
-        window.expandedTimeline[eventYear][eventMonth] = {};
-      }
-      if (!window.expandedTimeline[eventYear][eventMonth].hasOwnProperty(eventDay)) {
-        window.expandedTimeline[eventYear][eventMonth][eventDay] = [];
-      }
-      window.expandedTimeline[eventYear][eventMonth][eventDay].push({
-        text: eventText,
-        color: eventColor
-      });
+      addItemToExpandedTimeline(item);
     }
   }
 
