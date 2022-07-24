@@ -179,7 +179,7 @@ function yearType(year) {
   return "expanded-year";
 }
 
-function addItemToExpandedTimeline(item) {
+function addItemToExpandedTimeline(item, details) {
   var eventYear = item.year;
   var eventMonth = item.month;
   var eventDay = item.day;
@@ -197,7 +197,8 @@ function addItemToExpandedTimeline(item) {
   }
   window.expandedTimeline[eventYear][eventMonth][eventDay].push({
     text: eventText,
-    color: eventColor
+    color: eventColor,
+    details: details
   });
 }
 
@@ -211,8 +212,9 @@ function drawTimeline() {
   for (var i = 0; i < window.timelines.length; i++) {
     var item = window.timelines[i];
     if (item.type === "period") {
-      addItemToExpandedTimeline(item.start);
-      addItemToExpandedTimeline(item.end);
+      var details = {text: item.text, color: item.color};
+      addItemToExpandedTimeline(item.start, details);
+      addItemToExpandedTimeline(item.end, details);
     }
   }
 
@@ -220,7 +222,7 @@ function drawTimeline() {
   for (var i = 0; i < window.timelines.length; i++) {
     var item = window.timelines[i];
     if (item.type === "point") {
-      addItemToExpandedTimeline(item);
+      addItemToExpandedTimeline(item, {});
     }
   }
 
@@ -282,6 +284,7 @@ function drawTimeline() {
                 console.log(events[i]);
 
                 var text = events[i].text;
+                var detailsText = events[i].details.text;
 
                 var template = document.querySelector('#templates .event');
                 var timelineContainer = document.querySelector('.container #timeline');
@@ -291,6 +294,7 @@ function drawTimeline() {
                 clonedTemplate.querySelector(".month").textContent = humanReadableMonth(month);
                 clonedTemplate.querySelector(".day").textContent = day;
                 clonedTemplate.querySelector(".text").textContent = text;
+                clonedTemplate.querySelector(".details").textContent = detailsText;
                 timelineContainer.appendChild(clonedTemplate);
               }
             }
