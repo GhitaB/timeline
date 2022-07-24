@@ -285,6 +285,7 @@ function drawTimeline() {
 
                 var text = events[i].text;
                 var detailsText = events[i].details.text;
+                var detailsColor = events[i].details.color;
 
                 var template = document.querySelector('#templates .event');
                 var timelineContainer = document.querySelector('.container #timeline');
@@ -298,6 +299,7 @@ function drawTimeline() {
                   clonedTemplate.querySelector(".details").remove();
                 } else {
                   clonedTemplate.querySelector(".details").textContent = detailsText;
+                  clonedTemplate.querySelector(".details").style.background = detailsColor;
                 }
                 timelineContainer.appendChild(clonedTemplate);
               }
