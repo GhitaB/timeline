@@ -254,6 +254,29 @@ var example3 = [
     text: "Reforma sănătății, reforma în îmbrăcăminte.",
     color: "#636e72"
   },
+  {
+    type: "period",
+    start: {
+      year: 1870,
+      month: 1,
+      day: 1,
+      approxDay: true,
+      text: "Test - începe perioadă AAA.",
+      color: "green"
+    },
+    end: {
+      year: 1880,
+      month: 3,
+      day: 1,
+      approxYear: true,
+      approxMonth: true,
+      approxDay: true,
+      text: "Test - se încheie perioadă AAA.",
+      color: "green"
+    },
+    text: "Test perioadă aproximativă AAA",
+    color: "red",
+  },
 ];
 // colors: https://flatuicolors.com/palette/us
 
